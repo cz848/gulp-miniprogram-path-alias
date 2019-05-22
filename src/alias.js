@@ -3,6 +3,7 @@ let path = require('path');
 // js
 let es5 = /require\(['"](.*?)['"]\)/g;
 let es6 = /from\s+['"](.*?)['"]/g;
+let json = /"iconPath":\s*['"](.*?)['"]/g;
 // wxml : import|wxs|image|audio|video|live-player|live-pusher|web-view
 let wxml = /(?:src|url|poster)=['"](.*?)['"]/g;
 // css
@@ -21,6 +22,9 @@ function alias(options, content, _filePath) {
     case '.wxs':
         content = content.replace(es6, replaceCallback);
         content = content.replace(es5, replaceCallback);
+        break;
+    case '.json':
+        content = content.replace(json, replaceCallback);
         break;
     case '.wxml':
         content = content.replace(wxml, replaceCallback);
