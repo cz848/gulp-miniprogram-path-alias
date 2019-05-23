@@ -3,7 +3,7 @@ let path = require('path');
 // js
 let es5 = /require\(['"](.*?)['"]\)/g;
 let es6 = /from\s+['"](.*?)['"]/g;
-let json = /"iconPath":\s*['"](.*?)['"]/g;
+let json = /"(?:selected)?iconPath":\s*['"](.*?)['"]/gi;
 // wxml : import|wxs|image|audio|video|live-player|live-pusher|web-view
 let wxml = /(?:src|url|poster)=['"](.*?)['"]/g;
 // css
